@@ -64,9 +64,8 @@ Electricity demand is not only driven by home uses, but also by industry and eco
 
 #### Energy Demand and the Weather
 
-Peaks in energy demand were seen to correspond to days of extreme heat, or more rarely, extreme cold. Heat has a stronger effect as air conditioning is almost always powered by electricity, whereas heat can come from many different sources which were not accounted for here.
+Peaks in energy demand were seen to correspond to days of extreme heat, or more rarely, extreme cold. Heat has a stronger effect as air conditioning is almost always powered by electricity, whereas heat can come from many different sources which were not accounted for here. 52 degrees Fahrenheit, or approximately 11 degrees celcius, was found to be the mean monthly temperature associated with the lowest consumption of electricity, though this is a national average temperature and it is possible that the temperature in the region was different.
 
-* see if I can find a particularly mild summer to contrast with a hot one not too far away in years
 
 #### Energy Demand and Holidays
 
