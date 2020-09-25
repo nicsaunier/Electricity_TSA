@@ -23,16 +23,16 @@ Note that due to issues with data availability and cost, the notebook which inco
 
 This project contains the following notebooks:
 
-- [1.Basic_EDA_and_Data_Cleaning](http://127.0.0.1:8888/notebooks/1.Basic_EDA_and_Data_Cleaning.ipynb)  
+- [1.Basic_EDA_and_Data_Cleaning](https://github.com/nicsaunier/Electricity_TSA/blob/master/1.Basic_EDA_and_Data_Cleaning.ipynb)  
 As the name indicates, this notebook contains scripts to properly import and clean the data for further processing, as well as basic exploration of electricity trends over different periods.  
 
-- [2.Daily_Electricity_Consumption_Analysis_Forecasting](http://127.0.0.1:8888/notebooks/2.Daily_Electricity_Consumption_Analysis_Forecasting.ipynb):  
+- [2.Daily_Electricity_Consumption_Analysis_Forecasting](https://github.com/nicsaunier/Electricity_TSA/blob/master/2.Daily_Electricity_Consumption_Analysis_Forecasting.ipynb):  
 In this notebook, we fit a seasonal ARIMA model to the training data and look at the results, with an in-depth investigation of the biggest errors made by the model. 
 
-- [3.Daily_Electric_Consumption_Prediction_XGBoost](http://127.0.0.1:8888/notebooks/3.Daily_electric_consumption_prediction_XGBoost.ipynb)  
+- [3.Daily_Electric_Consumption_Prediction_XGBoost](https://github.com/nicsaunier/Electricity_TSA/blob/master/3.Daily_electric_consumption_prediction_XGBoost.ipynb)  
 Prediction of daily electricity consumption using the XGBoost algorithm. The model's predictions are compared with those made by the seasonal ARIMA model.
 
-- [4.Monthly_Electric_Consumption_and_Weather](http://127.0.0.1:8888/notebooks/4.Monthly_Electricity_Consumption_and_Weather.ipynb)  
+- [4.Monthly_Electric_Consumption_and_Weather](https://github.com/nicsaunier/Electricity_TSA/blob/master/4.Monthly_Electricity_Consumption_and_Weather.ipynb)  
 This notebook merges our original data, resampled by month, with data on the weather in the United States over the same period. We then create 3 models to predict monthly electric consumption based on the available data: a linear regression model, a SARIMAX model (Seasonal ARIMA with eXogenous variables) and an XGBoost model.
 
 ## Problem Definition
