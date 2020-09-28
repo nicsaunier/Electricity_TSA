@@ -132,11 +132,11 @@ Mean monthly temperatures around 52 degrees Farenheit (approx. 11 degrees celsiu
 #### XGBoost
 
 XGBoost stands for eXtreme Gradient Boosting. It is an ensemble tree type of algorithm which improves on traditional gradient boosted trees. XGBoost was chosen as it is known to perform well on time series data (and in general, tends to be one of the algorithms that performs best on any kind of regression or classification task). The way XGBoost works for regression can be summarized like this:
-- first, XGBoost makes a single stump (the simplest possible tree, with only one root node) which is its estimation.
-- then, the residuals of that model are calculated, and a similarity score is calculated for those residuals.
-- after that, XGBoost looks for a split in the data that can result in an increase of similarity scores, or gain, that is the highest possible: for example, if XGBoost split the first tree into raw temperatures into below 60 and above 60, it would then have two estimators with two sets of residuals instead of the one of its original estimate, and most likely, each set of residuals would be more similar than the residuals of the original prediction.
-- XGBoost makes the tree as deep as we specify that we want it to be, but it incorporates several regularization terms in its calculation of gain which penalize models that are too complex or branches of trees which don't include enough observations.
-- Once the tree has been built, XGBoost then adjusts the predicted values of data points based on its predictions, but not completely: it uses a learning rate, which we specify, in order to make small adjustments.
+- first, XGBoost makes a single prediction for all of the data.
+- then, the residuals of that prediction are calculated, and a similarity score is calculated for those residuals. The numerator of this similarity score is the squared sum of the residuals. Since residuals themselves are not squared, residuals with different signs cancel each other out.
+- after that, XGBoost looks for a split in the data that can result in an increase of similarity scores, or gain, that is the highest possible: for example, if XGBoost split the first tree into raw temperatures below 60 and above 60, it would then have two estimators with two sets of residuals instead of the one of its original estimate, and most likely, each set of residuals would be more similar than the residuals of the original prediction, resulting in an increase of similarity scores called gain. The best split is chosen based on the maximum gain, for the separations that XGBoost can make, which depend on how many columns XGBoost is considering to split the data. The percentage of columns to use in building each tree is a hyperparameter, see XGBoost Hyperparameter tuning in the Daily Predictions with XGBoost notebook for more details.
+- XGBoost keeps separating the data until doing so results in no more gain or until the tree is as deep as we have specified that we want it to be. Several regularization terms can be added, which affect the calculation of gain. Adding regularization terms avoids overfitting, by preventing splits that don't lead to a certain threshold of gain or branches of trees which don't include enough observations (see the parameter tuning section for more  details).
+- Once the tree has been built, a prediction value is calculated for each node. XGBoost then adjusts the predicted values of data points based on these values, but this adjustment is slow: just like in traditional gradient boosting, XGBoost uses a learning rate, which we specify, in order to make small adjustments to its predictions.
 - Then, additional trees are  built based on the residuals of the previous trees. XGBoost keeps building trees until it reaches the maximum number of trees which we specified, or until there is no more improvement from adding more trees if we have enabled early stopping.
 
 ### Validating the Model
@@ -169,13 +169,6 @@ Since the in-depth exploration of residuals that was conducted after the SARIMA 
 Unfortunately, this could only be done on a monthly basis, due to data availability. However, this led to a lot of improvement in predictions.
 
 <img src = 'images/XGBoost predictions.png' />
-
-
-```python
-from IPython.display import HTML
-
-HTML(filename="images/metrics_summary.html")
-```
 
 
 
